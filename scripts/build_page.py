@@ -37,15 +37,28 @@ def card_html(entry):
       <p class="tags">{tags}</p>
     </div>"""
 
+STATUS_RANK = {"done": 0, "active": 1, "planned": 2}
+
+def sort_key(entry):
+    """Reihenfolge der Karten auf der Portfolio-Seite.
+
+    Zuerst nach Status (done, active, planned; Unbekanntes ans Ende),
+    bei gleichem Status alphabetisch nach Titel.
+    """
+    rank = STATUS_RANK.get(entry.get("status", ""), len(STATUS_RANK))
+    return (rank, entry.get("title", "").lower())
+
 def main():
     repos = search_repos()
-    cards = []
+    entries = []
     for repo in repos:
         meta = fetch_meta(repo["full_name"], repo["default_branch"])
         if meta is None:
             continue
         meta["url"] = repo["html_url"]
-        cards.append(card_html(meta))
+        entries.append(meta)
+
+    cards = [card_html(e) for e in sorted(entries, key=sort_key)]
 
     html = f"""<!DOCTYPE html>
 <html lang="de">
