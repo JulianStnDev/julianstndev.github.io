@@ -12,7 +12,15 @@ bei jedem Lauf überschrieben.
 
 ## Namenskonvention für Use-Case-Repos
 ai-uc-NN-kurzname (z.B. ai-uc-01-ticket-classification). Jedes trägt das Topic
-ai-pm-portfolio und eine meta.json mit Status ausschließlich: planned | active | done.
+ai-pm-portfolio (unter Topics, nicht im Website-Feld) und eine meta.json mit
+Status ausschließlich: planned | active | done.
+
+## meta.json (Englisch, speist die Karten)
+- title, summary (ein Satz „what it shows“), status, tags
+- metrics: 1–2 Kennzahlen wörtlich aus dem README
+- optional demo {url, note}, z.B. note "access code on request"
+- optional screenshot: Pfad im Repo, wird über raw.githubusercontent.com eingebunden
+Reihenfolge der Karten: Status, dann Repo-Name (UC-Nummer).
 
 ## README-Schema (in jedem Use-Case-Repo)
 Problem → PM-Entscheidung (abgewogene Optionen) → Architekturskizze →
@@ -21,6 +29,9 @@ Das PM-Artefakt (Entscheidung, Begründung) ist der eigentliche Deliverable —
 der Code ist der Beleg, nicht der Star.
 
 ## Sprache in öffentlich sichtbaren Texten
+Hub-Page komplett auf Englisch. In jedem Use-Case-Repo: README.md auf Englisch,
+README_DE.md auf Deutsch, inhaltlich identisch, oben jeweils Sprachlink
+(🇩🇪 Deutsche Version / 🇬🇧 English version).
 READMEs und Hub-Page lesen sich wie Fallstudien abgeschlossener Projekte, nicht
 wie Kursmaterial. Begriffe wie "Lernpfad", "Woche X", "Übung" oder "Curriculum"
 gehören nicht in öffentlich sichtbaren Text.
