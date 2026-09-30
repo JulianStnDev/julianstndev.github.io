@@ -1,41 +1,67 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI Product Manager Portfolio</title>
 <style>
   body { font-family: sans-serif; max-width: 800px; margin: 40px auto; padding: 0 16px; }
   .card { border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
   .status { font-size: 0.8em; padding: 2px 8px; border-radius: 4px; background: #eee; }
   .tags { color: #666; font-size: 0.9em; }
+  .intro { font-size: 1.05em; line-height: 1.5; }
+  .metrics { padding-left: 20px; }
+  img { max-width: 100%; border: 1px solid #ddd; border-radius: 4px; }
 </style>
 </head>
 <body>
 <h1>AI Product Manager Portfolio</h1>
+<p class="intro">Product Manager building hands-on AI product skills. This portfolio documents projects I built myself with Claude Code – from structured output and evaluation to RAG, agents with MCP, and a deployed agent with human-in-the-loop approval. Each project answers a product question with measured quality, cost and latency, not just a demo.</p>
 
     <div class="card">
-      <h2><a href="https://github.com/JulianStnDev/ai-uc-04-agents-mcp">Agents mit MCP: Support-Agent mit Freigaberegeln</a></h2>
+      <h2>Ticket Classification (Structured Output)</h2>
       <span class="status">done</span>
-      <p>Support-Agent mit eigenem MCP-Server und Autonomie-Matrix: Erstattungen im Schattenmodus, Pflichten per Stop-Hook im Code; pass^3 73 %, 27 USD pro 1000 Tickets</p>
-      <p class="tags">agents, mcp, evals</p>
+      <p>Turning free-text support tickets into validated JSON by giving every enum value an explicit condition in the tool schema.</p>
+      <ul class="metrics"><li>$1.37 per 1000 requests</li><li>p95 latency 0.96s (indicative, n=6)</li></ul>
+      
+      <p class="links"><a href="https://github.com/JulianStnDev/ai-uc-01-ticket-classification">Repository</a></p>
+      <p class="tags">structured-output, classification</p>
     </div>
     <div class="card">
-      <h2><a href="https://github.com/JulianStnDev/ai-uc-03-context-engineering">Context Engineering: Retrieval vs. Kontextfenster</a></h2>
+      <h2>Evaluation Harness (Goldset &amp; Prompt Iteration)</h2>
       <span class="status">done</span>
-      <p>Retrieval vs. Kontextfenster: Messung von 4 Varianten auf 27 Fragen</p>
-      <p class="tags">rag, context-engineering, evals</p>
-    </div>
-    <div class="card">
-      <h2><a href="https://github.com/JulianStnDev/ai-uc-02-evaluation-harness">Evaluation Harness (Goldset & Prompt-Iteration)</a></h2>
-      <span class="status">done</span>
-      <p>Prompt-Stände gegen ein handgelabeltes Goldset messen: Konfusionsmatrix, Fehlerrichtung, Kosten</p>
+      <p>Measuring prompt versions against a hand-labeled goldset with confusion matrix, error direction and cost, so a prompt change is a measured release decision.</p>
+      <ul class="metrics"><li>89.0% category accuracy (Macro-F1 0.889)</li><li>$2.23 per 1000 requests</li></ul>
+      
+      <p class="links"><a href="https://github.com/JulianStnDev/ai-uc-02-evaluation-harness">Repository</a></p>
       <p class="tags">evaluation, goldset, classification, prompt-iteration</p>
     </div>
     <div class="card">
-      <h2><a href="https://github.com/JulianStnDev/ai-uc-01-ticket-classification">Ticket-Klassifikation (Structured Output)</a></h2>
+      <h2>Context Engineering: Retrieval vs. Context Window</h2>
       <span class="status">done</span>
-      <p>Freitext-Support-Tickets zu strukturiertem JSON klassifizieren</p>
-      <p class="tags">structured-output, classification</p>
+      <p>Four ways to give a support assistant its knowledge, measured on 27 questions: for a small knowledge base, whole articles beat chunked retrieval.</p>
+      <ul class="metrics"><li>23/27 = 85% alles_ok (all criteria met)</li><li>3.29 USD per 1000 requests</li></ul>
+      
+      <p class="links"><a href="https://github.com/JulianStnDev/ai-uc-03-context-engineering">Repository</a></p>
+      <p class="tags">rag, context-engineering, evals</p>
+    </div>
+    <div class="card">
+      <h2>Agents with MCP: Support Agent with Approval Rules</h2>
+      <span class="status">done</span>
+      <p>Deciding a support agent&#x27;s autonomy per action with data: shadow mode for refunds, pass^k reliability and duties enforced in code.</p>
+      <ul class="metrics"><li>pass^3 = 73% (success per run 87%)</li><li>27.0 USD per 1000 requests</li></ul>
+      
+      <p class="links"><a href="https://github.com/JulianStnDev/ai-uc-04-agents-mcp">Repository</a></p>
+      <p class="tags">agents, mcp, evals</p>
+    </div>
+    <div class="card">
+      <h2>Deployment: The Support Agent as a Web Demo</h2>
+      <span class="status">done</span>
+      <p>The UC4 support agent deployed on Cloud Run with a live view of its tool calls, human approval before every refund answer and a hard monthly budget.</p>
+      <ul class="metrics"><li>34.1 USD per 1000 requests</li><li>p95 latency 39.7 s (n = 8)</li></ul>
+      <a href="https://raw.githubusercontent.com/JulianStnDev/ai-uc-07-deployment/main/docs/screenshots/betrieb/5-konsole-notiz.png"><img src="https://raw.githubusercontent.com/JulianStnDev/ai-uc-07-deployment/main/docs/screenshots/betrieb/5-konsole-notiz.png" alt="Screenshot of Deployment: The Support Agent as a Web Demo" loading="lazy"></a>
+      <p class="links"><a href="https://github.com/JulianStnDev/ai-uc-07-deployment">Repository</a> · <a href="https://uc7-807149335205.europe-west3.run.app">Live demo</a> (access code on request)</p>
+      <p class="tags">deployment, agents, cloud-run, sse, monitoring, llm-judge</p>
     </div>
 </body>
 </html>
