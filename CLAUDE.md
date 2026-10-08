@@ -38,3 +38,8 @@ gehören nicht in öffentlich sichtbaren Text.
 
 ## Neue Use-Case-Repos anlegen
 Über "Use this template" auf dem Repo ai-uc-template, nicht von Hand kopieren.
+
+Pflichtpunkte beim Anlegen (gilt ab UC8):
+- GitHub-Topic ai-pm-portfolio gesetzt (gh repo edit <repo> --add-topic ai-pm-portfolio).
+  Ohne Topic überspringt build-page.yml das Repo, und es erscheint keine Karte
+  (so ist UC6 zunächst gefehlt).
